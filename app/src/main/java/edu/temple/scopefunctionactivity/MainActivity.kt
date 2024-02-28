@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val listOfNumbers = listOf(1,2)
         val listOfDoubleNumbers = listOf(1.0,2.0)
         Log.d("function output", averageLessThanMedian(listOfDoubleNumbers).toString())
-        Log.d("function output", getView(1, null,listOfNumbers, applicationContext).toString())
+        Log.d("function output", getView(0, null,listOfNumbers, applicationContext).toString())
 
 
 
@@ -34,14 +34,13 @@ class MainActivity : AppCompatActivity() {
     // Look at the final/return value and build the function "working backwards"
 
     // Return a list of random, sorted integers
-    private fun getTestDataArray() = MutableList(10) { Random.nextInt() }.apply { sort() }
+    private fun getTestDataArray() = MutableList(10) { Random.nextInt() }.sorted()
 
     // Return true if average value in list is greater than median value, false otherwise
-    private fun averageLessThanMedian(listOfNumbers: List<Double>) =
-        listOfNumbers.average() < listOfNumbers.sorted().let {
-            if (it.size % 2 == 0) (it[it.size / 2] + it[(it.size - 1) / 2]) / 2
-            else it[it.size / 2]
-        }
+    private fun averageLessThanMedian(listOfNumbers: List<Double>) = listOfNumbers.sorted().let{
+        it.average() < if (it.size % 2 == 0) (it[it.size / 2] + it[(it.size - 1) / 2]) / 2
+        else it[it.size / 2]
+    }
 
     // Create a view from an item in a collection, but recycle if possible (similar to an AdapterView's adapter)
     private fun getView(position: Int, recycledView: View?, collection: List<Int>, context: Context) =
