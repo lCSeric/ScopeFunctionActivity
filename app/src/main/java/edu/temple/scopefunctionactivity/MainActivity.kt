@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val listOfNumbers = listOf(1,2)
         val listOfDoubleNumbers = listOf(1.0,2.0)
         Log.d("function output", averageLessThanMedian(listOfDoubleNumbers).toString())
-        Log.d("function output", getView(0, null,listOfNumbers, applicationContext).toString())
+        Log.d("function output", getView(1, null,listOfNumbers, applicationContext).toString())
 
 
 
